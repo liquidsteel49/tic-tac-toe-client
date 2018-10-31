@@ -1,2 +1,2 @@
 ###################################
-this is a tic tac toe game, good luck
+My tic-tac-toe project
