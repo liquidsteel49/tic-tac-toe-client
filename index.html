@@ -12,6 +12,25 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <form id="user-registry">
+
+        <fieldset id="sign-up">
+          <input type="text" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input type="submit" value="Sign up!">
+          <legend>Let's get started!</legend>
+        </fieldset>
+
+        <fieldset id="sign-in">
+          <input type="submit" value="Sign up!">
+        </fieldset>
+
+        <fieldset id="sign-out">
+          <input type="submit" value="Sign out!">
+        </fieldset>
+
+      </form>
+
     </body>
 </html>
