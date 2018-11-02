@@ -1,1 +1,45 @@
 @import '~bootstrap/scss/bootstrap';
+
+$black: #000;
+
+.gameboard {
+  align-content: center;
+  border: 5px $black solid;
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  width: 600px;
+}
+
+// want to get 3 cells
+.cell {
+  border: 1px $black solid;
+  display: flex;
+  height: 200px;
+  width: 200px;
+  justify-content: center;
+  align-content: center;
+}
+
+// use flex-box for everything
+// .wrapper {
+//   align-content: center;
+//   border-radius: : 1px $black solid;
+//   display: flex;
+//   height: 500px;
+//   justify-content: center;
+//   width: 500px;
+// }
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+// .cell {
+//   border-radius: : 1px $black solid;
+//   display: flex;
+//   height: 300px;
+//   width: 300px;
+// }
