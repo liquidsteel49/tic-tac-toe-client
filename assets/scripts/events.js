@@ -2,8 +2,6 @@
 // build an array to store gameboard information
 const gameboard = ['', '', '', '', '', '', '', '', '']
 
-// for the future
-
 let currentPlayer = 'x'
 
 // put player token in box
@@ -14,8 +12,10 @@ let currentPlayer = 'x'
 const changeToken = function (event) {
   console.log(event)
 
-// code below is example
-  $(event.target).html('sdfsdf')
+/* assigns currentPlayer marker then switches
+marker to either x or o depending on what it
+was previous */
+  $(event.target).html(currentPlayer)
   if (currentPlayer === 'x') {
     currentPlayer = 'o'
   } else if (currentPlayer === 'o') {
