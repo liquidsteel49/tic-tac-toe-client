@@ -8,26 +8,26 @@ let currentPlayer = 'x'
 
 // document.findElementById().
 
-// change current player to x or o depending on clicking empty box
+/* change current player to x or o depending on
+clicking empty box */
 const changeToken = function (event) {
   console.log(event)
-
-/* assigns currentPlayer marker then switches
-marker to either x or o depending on what it
-was previous */
   $(event.target).html(currentPlayer)
+  playerInput(event)
+  console.log('gameboard', gameboard)
   if (currentPlayer === 'x') {
     currentPlayer = 'o'
   } else if (currentPlayer === 'o') {
     currentPlayer = 'x'
   }
+  console.log('current player is', currentPlayer)
   return currentPlayer
 }
 
-
-
+// sends x or o to gameboard array based on it's event.target.id
 const playerInput = function (event) {
-  gameboard.map(event.target(id))
+  const id = parseInt(event.target.id)
+  gameboard[id] = currentPlayer
 }
 
 /* check if valid click or turn off event
