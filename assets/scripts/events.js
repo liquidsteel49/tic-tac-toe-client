@@ -3,7 +3,6 @@
 const gameboard = ['', '', '', '', '', '', '', '', '']
 
 // for the future
-// let userName =  || 'guest' // username from submit box
 
 let currentPlayer = 'x'
 
@@ -12,13 +11,23 @@ let currentPlayer = 'x'
 // document.findElementById().
 
 // change current player to x or o depending on clicking empty box
-const changeToken = function () {
+const changeToken = function (event) {
+  console.log(event)
+
+// code below is example
+  $(event.target).html('sdfsdf')
   if (currentPlayer === 'x') {
     currentPlayer = 'o'
   } else if (currentPlayer === 'o') {
     currentPlayer = 'x'
   }
   return currentPlayer
+}
+
+
+
+const playerInput = function (event) {
+  gameboard.map(event.target(id))
 }
 
 /* check if valid click or turn off event
