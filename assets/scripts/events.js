@@ -6,6 +6,23 @@ const gameboard = [
   ['', '', '']
 ]
 
+const checkWinner = function () {
+  const winningCombos = [
+    [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
+    [gameboard[1][0], gameboard[1][1], gameboard[1][2]],
+    [gameboard[2][0], gameboard[2][1], gameboard[2][2]],
+    [gameboard[0][0], gameboard[1][0], gameboard[2][0]],
+    [gameboard[0][1], gameboard[1][1], gameboard[2][1]],
+    [gameboard[0][2], gameboard[1][2], gameboard[2][2]],
+    [gameboard[0][0], gameboard[1][1], gameboard[2][2]],
+    [gameboard[0][2], gameboard[1][1], gameboard[2][0]]
+  ]
+  // => implies return because this is all single line
+  const winner = winningCombos.findIndex((combo) => combo.every(cell => cell === currentPlayer))
+  return winner > -1
+}
+
+
 const PLAYER = {
   ONE: 'x',
   TWO: 'o'
@@ -16,13 +33,21 @@ let currentPlayer = PLAYER.ONE
 /* change current player to x or o depending on
 clicking empty box */
 const changeToken = function (event) {
-  console.log(event)
+  // row and col of element clicked
   $(event.target).html(currentPlayer)
+  // function puts x or o on board
   playerInput(event)
-  console.log('gameboard', gameboard)
-  currentPlayer = currentPlayer === PLAYER.ONE ? PLAYER.TWO : PLAYER.ONE
-  console.log('current player is', currentPlayer)
-  $(event.target).off('click', changeToken)
+  // parses through whole board to find if current player wins
+  const isWinner = checkWinner()
+  // if no winner keep going
+  if (isWinner === false) {
+    // swap player if no winner
+    currentPlayer = currentPlayer === PLAYER.ONE ? PLAYER.TWO : PLAYER.ONE
+    // if no winner, lock down cell
+    $(event.target).off('click', changeToken)
+  } else {
+    $('.cell').off('click', changeToken)
+  }
 }
 
 /* sends x or o to gameboard array based on it's
