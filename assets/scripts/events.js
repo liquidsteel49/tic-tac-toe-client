@@ -18,10 +18,10 @@ const checkWinner = function () {
     [gameboard[0][2], gameboard[1][1], gameboard[2][0]]
   ]
   // => implies return because this is all single line
+  /* returns firs element that fits condiion or returns -1 */
   const winner = winningCombos.findIndex((combo) => combo.every(cell => cell === currentPlayer))
   return winner > -1
 }
-
 
 const PLAYER = {
   ONE: 'x',
@@ -29,6 +29,8 @@ const PLAYER = {
 }
 
 let currentPlayer = PLAYER.ONE
+
+let moveCount = 0
 
 /* change current player to x or o depending on
 clicking empty box */
@@ -39,14 +41,22 @@ const changeToken = function (event) {
   playerInput(event)
   // parses through whole board to find if current player wins
   const isWinner = checkWinner()
+  // increase move count
+  moveCount += 1
+  console.log(moveCount)
   // if no winner keep going
   if (isWinner === false) {
     // swap player if no winner
     currentPlayer = currentPlayer === PLAYER.ONE ? PLAYER.TWO : PLAYER.ONE
     // if no winner, lock down cell
     $(event.target).off('click', changeToken)
+    // tie
+  } else if (isWinner === false && moveCount === 9) {
+    console.log('It\'s a tie')
+    // win
   } else {
     $('.cell').off('click', changeToken)
+    console.log(`Winner is ${currentPlayer}`)
   }
 }
 
@@ -58,11 +68,6 @@ const playerInput = function (event) {
   gameboard[row][col] = currentPlayer
 }
 
-
-/* checks if there is a winner */
-
-
-/* winning array positions */
 // check if array[i] position is filled and when it matches any of the
 // winning positions then check for matching x or o
 
