@@ -43,17 +43,17 @@ const changeToken = function (event) {
   const isWinner = checkWinner()
   // increase move count
   moveCount += 1
-  console.log(moveCount)
+  console.log('move count', moveCount)
+
+  // tie
+  if (isWinner === false && moveCount === 9) {
+    console.log('It\'s a tie')
   // if no winner keep going
-  if (isWinner === false) {
+  } else if (isWinner === false) {
     // swap player if no winner
     currentPlayer = currentPlayer === PLAYER.ONE ? PLAYER.TWO : PLAYER.ONE
     // if no winner, lock down cell
     $(event.target).off('click', changeToken)
-    // tie
-  } else if (isWinner === false && moveCount === 9) {
-    console.log('It\'s a tie')
-    // win
   } else {
     $('.cell').off('click', changeToken)
     console.log(`Winner is ${currentPlayer}`)
