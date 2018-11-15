@@ -1,6 +1,6 @@
 // write function to pass submit form email as userName var (2.0)
 // build an array to store gameboard information
-const gameboard = [
+let gameboard = [
   ['', '', ''],
   ['', '', ''],
   ['', '', '']
@@ -37,14 +37,15 @@ clicking empty box */
 const changeToken = function (event) {
   // row and col of element clicked
   $(event.target).html(currentPlayer)
+  console.log(event)
   // function puts x or o on board
   playerInput(event)
   // parses through whole board to find if current player wins
   const isWinner = checkWinner()
   // increase move count
   moveCount += 1
+  $(event.target).off('click', changeToken)
   console.log('move count', moveCount)
-
   // tie
   if (isWinner === false && moveCount === 9) {
     console.log('It\'s a tie')
@@ -52,12 +53,12 @@ const changeToken = function (event) {
   } else if (isWinner === false) {
     // swap player if no winner
     currentPlayer = currentPlayer === PLAYER.ONE ? PLAYER.TWO : PLAYER.ONE
-    // if no winner, lock down cell
-    $(event.target).off('click', changeToken)
+    // winner
   } else {
     $('.cell').off('click', changeToken)
     console.log(`Winner is ${currentPlayer}`)
   }
+  console.log(gameboard)
 }
 
 /* sends x or o to gameboard array based on it's
@@ -67,10 +68,25 @@ const playerInput = function (event) {
   const col = parseInt(event.target.dataset.col)
   gameboard[row][col] = currentPlayer
 }
-
+// use cell as the common class to make empty gameboard
+const reset = () => {
+  $('.cell').off('click', changeToken)
+  $('.cell').on('click', changeToken)
+  $('.cell').empty()
+  moveCount = 0
+  currentPlayer = PLAYER.ONE
+  gameboard = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ]
+  console.log('Current player', currentPlayer)
+  console.log(gameboard)
+}
 // check if array[i] position is filled and when it matches any of the
 // winning positions then check for matching x or o
 
 module.exports = {
-  changeToken
+  changeToken,
+  reset
 }
