@@ -11,4 +11,5 @@ const events = require('./events.js')
 // $('.gameboard').on('click', events.exampleFunc)
 $(() => {
   $('.cell').on('click', events.changeToken)
+  $('.reset').on('click', events.reset)
 })
