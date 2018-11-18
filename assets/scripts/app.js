@@ -12,4 +12,5 @@ const events = require('./events.js')
 $(() => {
   $('.cell').on('click', events.changeToken)
   $('.reset').on('click', events.reset)
+  // $('.signUpButton').on('submit', events.onSignUp)
 })
