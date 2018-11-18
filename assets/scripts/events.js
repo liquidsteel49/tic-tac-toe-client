@@ -1,4 +1,7 @@
 // write function to pass submit form email as userName var (2.0)
+const api = require('./auth/api.js')
+const ui = require('./auth/ui.js')
+
 // build an array to store gameboard information
 let gameboard = [
   ['', '', ''],
@@ -57,6 +60,8 @@ const changeToken = function (event) {
   } else {
     $('.cell').off('click', changeToken)
     console.log(`Winner is ${currentPlayer}`)
+    // ui.onWin(currentPlayer) Send currentPlayer to a UI function that will show the winner on screen
+    // Make sure to delete the HTML on reset
   }
   console.log(gameboard)
 }
