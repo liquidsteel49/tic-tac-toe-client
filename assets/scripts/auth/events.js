@@ -37,9 +37,34 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
+const onReset = event => {
+  api.reset()
+    .then(ui.onResetSuccess)
+    .catch(ui.onResetFailure)
+}
+// something here isn't right
+const onCellClick = event => {
+  const index = $(event.target).attr('.data-apiIndex').replace('cell id', '')
+  const value = currentPlayer
+  const over = checkIfOver()
+  const data = {
+    game: {
+      cell: {
+        index,
+        value
+      },
+      over
+    }
+  }
+  api.patchGame(data)
+    .then(ui.onPatchGameSuccess)
+    .catch(ui.onPatchGameFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onReset
 }
