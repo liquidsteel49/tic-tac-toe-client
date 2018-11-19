@@ -85,10 +85,10 @@ const reset = () => {
     ['', '', ''],
     ['', '', '']
   ]
+  $('#message-area').empty()
   console.log('Current player', currentPlayer)
   console.log(gameboard)
 }
-// check if array[i] position is filled and when it matches any of the
 // winning positions then check for matching x or o
 
 module.exports = {
