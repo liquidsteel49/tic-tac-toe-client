@@ -60,6 +60,36 @@ const signOutFailure = error => {
   console.error('signOutFailure ran. Error is :', error)
 }
 
+const onResetSuccess = data => {
+  {
+    "game": {
+      // not sure if it needs the id number yet or could be empty
+      "id": 3,
+      // formatting could be trouble
+      "cells": [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+      ],
+      "over": false,
+      // potential name problem
+      "player_x": {
+        "id": 1,
+        "email": "example@example.com"
+      },
+      "player_o": null
+    }
+  }
+  store.gameId = data.game.id
+  $('#message-area').html('No.')
+}
+
+const onResetFailure = error => {
+  console.log('You had an error when creating a new game')
+  console.log(error)
+  $('#message-area').html('No.')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -68,5 +98,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  onResetSuccess,
+  onResetFailure
 }
