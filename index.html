@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac_Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <!-- sign up stuff -->
+      <form id="user-registry">
+        <fieldset id="sign-up">
+          <input type="text" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input type="submit" value="Sign up!">
+          <legend>Let's get started!</legend>
+        </fieldset>
+        <fieldset id="sign-in">
+          <input type="submit" value="Sign in!">
+        </fieldset>
+        <fieldset id="sign-out">
+          <input type="submit" value="Sign out!">
+        </fieldset>
+      </form>
+
+<!-- sign in messages -->
+
+<div id="message-area"></div>
+
+<!-- game board using a sort of table method -->
+      <div class = "gameboard">
+        <div class = "row">
+          <div class = "cell" data-row="0" data-col="0" data-apiIndex="0"></div>
+          <div class = "cell" data-row="0" data-col="1" data-apiIndex="1"></div>
+          <div class = "cell" data-row="0" data-col="2" data-apiIndex="2"></div>
+        </div>
+        <div class = "row">
+          <div class = "cell" data-row="1" data-col="0" data-apiIndex="3"></div>
+          <div class = "cell" data-row="1" data-col="1" data-apiIndex="4"></div>
+          <div class = "cell" data-row="1" data-col="2" data-apiIndex="5"></div>
+        </div>
+        <div class = "row">
+          <div class = "cell" data-row="2" data-col="0" data-apiIndex="6"></div>
+          <div class = "cell" data-row="2" data-col="1" data-apiIndex="7"></div>
+          <div class = "cell" data-row="2" data-col="2" data-apiIndex="8"></div>
+        </div>
+      </div>
+
+      <button type="button" class="reset">Reset Game</button>
+
+    </body>
+</html>
