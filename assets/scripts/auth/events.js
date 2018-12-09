@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+// should not use fat arror functions for promises
 const onSignUp = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
